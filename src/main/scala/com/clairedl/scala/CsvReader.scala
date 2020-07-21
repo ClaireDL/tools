@@ -2,9 +2,6 @@ package com.clairedl.scala
 
 import scala.io._
 import _root_.scala.io.Source
-import scala.collection.mutable
-import scala.collection.mutable.ListBuffer
-
 
 object CsvReader {
   abstract class Converter[A] {

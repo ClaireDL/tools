@@ -42,10 +42,18 @@ object CellFormatter {
 
     val whiteSpaces = columnWidth.flatMap {
         // Matches the columns for both tables and returns the absolute difference between the cells' width
-        case (k, v) => maxWidth.get(k).map(w => Map((k, generateCharacter((v - w).abs, ' ')))).get
+        case (k, v) => maxWidth
+          .get(k)
+          .map(w => Map((k, generateCharacter((v - w).abs, ' '))))
+          .get
       }
 
-    cell.flatMap {case (k, v) => whiteSpaces.get(k).map(w => Map((k, v + w))).get}
+    cell.flatMap{
+      case (k, v) => whiteSpaces
+        .get(k)
+        .map(w => Map((k, v + w)))
+        .get
+      }
   }
 
   /**
