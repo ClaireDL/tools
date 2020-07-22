@@ -19,4 +19,10 @@ object StringOperator {
     }
     indexMatch.toList
   }
+
+  def compareStrings(text1: String, text2: String): Boolean = {
+    var outcome = false
+    if (text1 == text2) { outcome = true }
+    outcome
+  }
 }

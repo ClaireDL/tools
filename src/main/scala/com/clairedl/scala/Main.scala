@@ -5,6 +5,7 @@ import com.clairedl.scala.CsvReader._
 import scala.util.Random._
 import scala.collection.mutable
 import com.clairedl.scala.TableFormatter._
+import com.clairedl.scala.StringOperator._
 
 object Main extends App {
 
@@ -54,6 +55,11 @@ object Main extends App {
   //
   // String operations
   //
-  val text = StringOperator
-  println(text.findString("That text is texty", "text"))
+  val find = findString("I am looking for the King of Skating.", "king")
+  println(find)
+
+  val comparison = StringOperator.compareStrings("Is it the same?", "is it the same?")
+  println(comparison)
+  val comparison2 = compareStrings("This is identical.", "This is identical.")
+  println(comparison2)
 }
