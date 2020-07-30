@@ -3,26 +3,41 @@ package com.clairedl.scala
 import scala.collection.mutable.ListBuffer
 
 object StringOperator {
+  /**
+  * Returns the position(s) of a string if it is found in a string
+  */
   def findString(text: String, toFind: String): List[Int] = {
-    val input = text
-      .split("").toList
-      .zipWithIndex
-    val expression = toFind.split("").toList
-    var indexMatch = new ListBuffer[Int]()
+    val input = text.zipWithIndex
+    val indexMatch = new ListBuffer[Int]()
 
-    for (inputIndex <- input.indices) {
-      val end = inputIndex + expression.length
-      val selected = input
-        .slice(inputIndex, (inputIndex + expression.length))
-        .map(_._1)
-      if (selected == expression) indexMatch += inputIndex
+    if (text == "" || toFind == "") indexMatch.toList
+    else {
+      for (index <- input.indices) {
+        val end = index + toFind.length()
+        val selected = input
+          .slice(index, end)
+          .map(_._1)
+          .mkString
+        if (selected == toFind) indexMatch += index
+      }
+      indexMatch.toList
     }
-    indexMatch.toList
   }
 
   def compareStrings(text1: String, text2: String): Boolean = {
-    var outcome = false
-    if (text1 == text2) { outcome = true }
-    outcome
+    text1 == text2
+  }
+
+  def slice(string: String, start: Int, end: Int): String = {
+    if (string.length < start)
+      return ""
+
+    var result = ""
+    for (i <- start to end) {
+      if (string.length >= i)
+        result += string(i)
+    }
+
+    return result
   }
 }

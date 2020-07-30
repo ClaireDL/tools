@@ -1,8 +1,8 @@
-package com.clairedl.scala
+package com.clairedl.scala.contentFormatter
 
 import scala.collection.mutable.ListBuffer
 
-object CellFormatter {
+class ContentFormatter(table: List[Map[String, String]]) {
   // Get the width of each cell in a line
   protected def getCellWidth(line: Map[String, String]): Map[String, Int] = {
       line.transform((key, value) => value.length().toInt)
@@ -17,7 +17,7 @@ object CellFormatter {
   protected def getTableCellWidth(input: List[Map[String, String]]): List[Map[String, Int]] = {
     // Contains the cell size for each line in the final table
     var result =  new ListBuffer[Map[String, Int]]()
-    for (line <- input) {result += getCellWidth(line)}
+    for (line <- input) { result += getCellWidth(line) }
     result.toList
   }
 
@@ -29,7 +29,7 @@ object CellFormatter {
       // .map(x => x._2.max)
       .flatten
       .groupBy(_._1)
-      .map(x => x._2.max)
+      .map{ x => x._2.max }
       .toMap
   }
 
@@ -44,24 +44,26 @@ object CellFormatter {
         // Matches the columns for both tables and returns the absolute difference between the cells' width
         case (k, v) => maxWidth
           .get(k)
-          .map(w => Map((k, generateCharacter((v - w).abs, ' '))))
+          .map{ w => Map((k, generateCharacter((v - w).abs, ' '))) }
           .get
       }
 
     cell.flatMap{
       case (k, v) => whiteSpaces
         .get(k)
-        .map(w => Map((k, v + w)))
+        .map{ w => Map((k, v + w)) }
         .get
       }
   }
 
   /**
   * Formats input so that content in each column has same width
+  * Prints input as a table
   */
-  def formatInput(table: List[Map[String, String]]): List[Map[String, String]] = {
+  def format(): List[Map[String, String]] = {
     val originalWidth = getTableCellWidth(table)
     val toMatch = maxWidth(originalWidth)
-    table.map{x => addWhiteSpace(x, toMatch)}
+    table.map{ x => addWhiteSpace(x, toMatch) }
   }
 }
+

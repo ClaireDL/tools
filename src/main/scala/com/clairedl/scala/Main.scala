@@ -4,7 +4,7 @@ import scala.io.Source
 import com.clairedl.scala.CsvReader._
 import scala.util.Random._
 import scala.collection.mutable
-import com.clairedl.scala.TableFormatter._
+import com.clairedl.scala.tableFormatter._
 import com.clairedl.scala.StringOperator._
 
 object Main extends App {
@@ -12,54 +12,51 @@ object Main extends App {
   //
   // Converting a csv file to a List of string
   //
-  // case class Name(phyllum: String, subphyllum: String)
-  // case class Plant(name: Name, value: Double, alive: Boolean)
-  // class ConvertCsvLineToPlant extends Converter[Plant] {
-  //   def convert(line: List[String]): Plant = {
-  //     Plant(Name(line(0), line(1)), line(2).toDouble, line(3).toBoolean)
-  //   }
-  // }
+  case class Name(phyllum: String, subphyllum: String)
+  case class Plant(name: Name, value: Double, alive: Boolean)
+  class ConvertCsvLineToPlant extends Converter[Plant] {
+    def convert(line: List[String]): Plant = {
+      Plant(Name(line(0), line(1)), line(2).toDouble, line(3).toBoolean)
+    }
+  }
 
-  // val converter = new ConvertCsvLineToPlant
-  // val garden = loadConvert("Plants.csv", converter)
+  val converter = new ConvertCsvLineToPlant
+  val garden = loadConvert("Plants.csv", converter)
   // garden.foreach(println)
 
   //
   // Transforming List of case classes into a table
   //
-  // val herbarium = List(
-  //   Plant(Name("Dianthus", "Caryophyllus"), 2.50, true),
-  //   Plant(Name("Rosa","Damascena"), 10, false),
-  //   Plant(Name("Iris","Germanica"), 3, true)
-  // )
+  val herbarium = List(
+    Plant(Name("Dianthus", "Caryophyllus"), 2.50, true),
+    Plant(Name("Rosa","Damascena"), 10, false),
+    Plant(Name("Iris","Germanica"), 3, true)
+  )
 
-  // class ConvertPlantToString extends CaseClassConverter[Plant]{
-  //   def convert(plant: Plant) = {
-  //     val phyllum = plant.name.phyllum
-  //     val subphyllum = plant.name.subphyllum
-  //     val value = plant.value.toString()
-  //     val alive = plant.alive.toString()
+  class PlantConverter extends CaseClassConverter[Plant]{
+    def convert(plant: Plant): Map[String, String] = {
+      val phyllum = plant.name.phyllum
+      val subphyllum = plant.name.subphyllum
+      val value = plant.value.toString()
+      val alive = plant.alive.toString()
 
-  //     Map(("phyllum", phyllum), ("subphyllum", subphyllum), ("value", value), ("alive", alive))
-  //   }
-  // }
+      Map(("phyllum", phyllum), ("subphyllum", subphyllum), ("value", value), ("alive", alive))
+    }
+  }
 
-  // val converter2 = new ConvertPlantToString
-  // val herbariumTable = convertToTable(herbarium, converter2)
+  val converter2 = new PlantConverter
 
-  // val table = formatAsTable(herbariumTable)
-  // for (line <- table) {
-  //   println(line.map(x => x._2).mkString("  "))
-  // }
+  val table = new TableFormatter[Plant](herbarium, converter2)
+  table.printAsTable(" | ")
 
   //
   // String operations
   //
-  val find = findString("I am looking for the King of Skating.", "king")
+  val find = findString("I am looking for the king of Skating.", " ")
   println(find)
 
-  val comparison = StringOperator.compareStrings("Is it the same?", "is it the same?")
-  println(comparison)
-  val comparison2 = compareStrings("This is identical.", "This is identical.")
-  println(comparison2)
+  // val comparison = StringOperator.compareStrings("Is it the same?", "is it the same?")
+  // println(comparison)
+  // val comparison2 = compareStrings("This is identical.", "This is identical.")
+  // println(comparison2)
 }

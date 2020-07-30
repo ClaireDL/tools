@@ -1,25 +1,34 @@
-package com.clairedl.scala
+package com.clairedl.scala.tableFormatter
 
 import scala.collection.mutable.ListBuffer
-import com.clairedl.scala.CellFormatter._
+import com.clairedl.scala.contentFormatter._
+
+abstract class CaseClassConverter[A] {
+  def convert(input: A): Map[String, String]
+}
 
 /**
-* After converting a list of case classes to strings, the program allows to format the input as a table
+* After converting a list of case classes to strings, the program formats the input as a table and prints it
 */
-object TableFormatter {
-  abstract class CaseClassConverter[A] {
-    def convert(input: A): Map[String, String]
+class TableFormatter[A](input: List[A], converter: CaseClassConverter[A]) {
+  def formatAsTable(): List[Map[String, String]] = {
+    if (input == List()) { List() }
+    else {
+      // Step 1: converts CaseClass to a Map
+      val data = input.map(x => converter.convert(x))
+
+      // Step 2: adds header
+      val header = data(0).transform((key, value) => key.toUpperCase())
+      val unformattedTable = header :: data
+
+      // Step 3: aligns content to get same size columns
+      val formattedTable = new ContentFormatter(unformattedTable).format()
+      formattedTable
+    }
   }
 
-  def convertToTable[A](input: List[A], converter: CaseClassConverter[A]): List[Map[String, String]] = {
-    input.map(x => converter.convert(x))
-  }
-
-  def formatAsTable(input: List[Map[String, String]]): List[Map[String, String]] = {
-    // Step 1: adds header
-    val header = input(0).transform((key, value) => key.toUpperCase())
-    val unformattedTable = header :: input
-    // Step 2: add to each cell the necessary white spaces to match max cell size
-    formatInput(unformattedTable)
+  def printAsTable(spacing: String): Unit = {
+    val output = formatAsTable()
+    for (line <- output) {println(line.values.mkString(spacing))}
   }
 }
