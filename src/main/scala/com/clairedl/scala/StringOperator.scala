@@ -24,8 +24,12 @@ object StringOperator {
     }
   }
 
-  def compareStrings(text1: String, text2: String): Boolean = {
-    text1 == text2
+  def compareStringsScalaMeth(text1: String, text2: String): Unit = {
+    if (text1 == text2) println(s"'$text1' and '$text2' are the same.")
+    else println(s"'$text1' and '$text2' are not the same.")
+
+    if (text1.equalsIgnoreCase(text2)) println(s"'$text1' and '$text2' are the same but differ for case.")
+    else println(s"'$text1' and '$text2' are not the same.")
   }
 
   def slice(string: String, start: Int, end: Int): String = {

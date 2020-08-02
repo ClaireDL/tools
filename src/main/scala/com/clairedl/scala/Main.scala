@@ -1,62 +1,69 @@
 package com.clairedl.scala
 
 import scala.io.Source
-import com.clairedl.scala.CsvReader._
 import scala.util.Random._
 import scala.collection.mutable
-import com.clairedl.scala.tableFormatter._
+import scala.collection.mutable.ListBuffer
 import com.clairedl.scala.StringOperator._
+// import com.clairedl.scala.Keywords._
 
 object Main extends App {
 
-  //
-  // Converting a csv file to a List of string
-  //
-  case class Name(phyllum: String, subphyllum: String)
-  case class Plant(name: Name, value: Double, alive: Boolean)
-  class ConvertCsvLineToPlant extends Converter[Plant] {
-    def convert(line: List[String]): Plant = {
-      Plant(Name(line(0), line(1)), line(2).toDouble, line(3).toBoolean)
-    }
-  }
-
-  val converter = new ConvertCsvLineToPlant
-  val garden = loadConvert("Plants.csv", converter)
-  // garden.foreach(println)
-
-  //
-  // Transforming List of case classes into a table
-  //
-  val herbarium = List(
-    Plant(Name("Dianthus", "Caryophyllus"), 2.50, true),
-    Plant(Name("Rosa","Damascena"), 10, false),
-    Plant(Name("Iris","Germanica"), 3, true)
+  val keywords: Map[String, Map[String, List[String]]]  =
+  Map(
+    ("Skydiving",
+      Map(
+        ("Tunnel", List("V E BRADLEY", "TUNNEL", "RICHARD OWEN\\s+TUNNEL\\s*$", "BODY FLIGHT")),
+        ("subcat", List("RICHARD OWEN\\s+(LIFT|UBER)\\s*$", "A2B EURO CARS"))
+        )
+    ),
+    ("Transports",
+      Map(
+        ("Tube/Bus", List("TFL.GOV.UK", "TFL TRAVEL", "UBER")),
+        ("Train", List("TRAINLINE", "LNE RAILWAY", "GREATER ANGLIA", "VIRGINTRAINSEC", "RAILCARD"))
+        )
+    )
   )
 
-  class PlantConverter extends CaseClassConverter[Plant]{
-    def convert(plant: Plant): Map[String, String] = {
-      val phyllum = plant.name.phyllum
-      val subphyllum = plant.name.subphyllum
-      val value = plant.value.toString()
-      val alive = plant.alive.toString()
+  val sub = Map(
+    ("Tube/Bus", List("TFL.GOV.UK", "TFL TRAVEL", "UBER")),
+    ("Train", List("TRAINLINE", "LNE RAILWAY", "GREATER ANGLIA", "VIRGINTRAINSEC", "RAILCARD"))
+  )
 
-      Map(("phyllum", phyllum), ("subphyllum", subphyllum), ("value", value), ("alive", alive))
+  def findInList(pairings: Map[String, List[String]], keyword: String): String = {
+    val result = pairings.find(_._2.contains(keyword))
+    result match {
+      case Some((x, y)) => x
+      case None         => ""
     }
   }
 
-  val converter2 = new PlantConverter
+  def findSubcategory(matches: Map[String, Map[String, List[String]]], keyword: String) = {
+    var finalResult = new Tuple2[String, String]("","")
 
-  val table = new TableFormatter[Plant](herbarium, converter2)
-  table.printAsTable(" | ")
+    for (key <- matches) {
+      val result = key._2.find(_._2.contains(keyword))
+      result match {
+        case Some((x, y)) => finalResult = ((key._1, x))
+        case None         => (("",""))
+      }
+    }
+
+    finalResult
+  }
+
+  println(findInList(sub, "UBER"))
+  println(findSubcategory(keywords, "maison"))
+
+
 
   //
   // String operations
   //
-  val find = findString("I am looking for the king of Skating.", " ")
-  println(find)
+  // val find = findString("I am looking for the king of Skating.", " ")
+  // println(find)
 
   // val comparison = StringOperator.compareStrings("Is it the same?", "is it the same?")
-  // println(comparison)
-  // val comparison2 = compareStrings("This is identical.", "This is identical.")
-  // println(comparison2)
+  // val comparison = StringOperator.compareStringsScalaMeth("", "d")
+  // val comparison2 = compareStringsScalaMeth("This is identical.", "This is identical.")
 }

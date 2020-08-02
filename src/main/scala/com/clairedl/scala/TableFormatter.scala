@@ -29,6 +29,6 @@ class TableFormatter[A](input: List[A], converter: CaseClassConverter[A]) {
 
   def printAsTable(spacing: String): Unit = {
     val output = formatAsTable()
-    for (line <- output) {println(line.values.mkString(spacing))}
+    for (line <- output) { println(line.values.mkString(spacing)) }
   }
 }

@@ -1,0 +1,216 @@
+{
+    "name": "Skydive",
+    "search": [
+        "PETERBOROUGH", "SKYDIVE", "RICHARD OWEN", "WINGGLIDER LIMITED"
+    ],
+    "sub": [{
+        "name": "Equipment",
+        "search": [
+            "THE JUMP SHOP", "DEKUNU", "CHUTINGSTAR", "AIR SUPPLY", "JEDI.*SUIT", "SUNSHINE FACTORY"
+        ]
+    }, {
+        "name": "Transports",
+        "search": [ "RICHARD OWEN\\s+(LIFT|UBER)\\s*$", "A2B EURO CARS" ]
+    }, {
+        "name": "Fees",
+        "search": [ "\\bBPA\\b", "FLIGHT1LLC", "UNITED STATES PARACHUT", "\\bBUPA\\b" ]
+    }, {
+        "name": "Tunnel",
+        "search": [ "V E BRADLEY", "TUNNEL", "RICHARD OWEN\\s+TUNNEL\\s*$", "BODY FLIGHT" ]
+    }, {
+        "name": "Accomodation",
+        "search": [ "CARAVAN SHARE", "LIAM HARDMAN", "TARGET SKYSPORTS" ]
+    }, {
+        "name": "Food",
+        "search": [
+            "BOMBSHELTER", "MOTO CAMBRIDGE", "CHOPSTIX", "KFC-SUTTON ROAD", "WCPC PETERBOROUGH",
+            "KFC - CAMBRIDGE"
+        ]
+    }]
+}, {
+    "name": "Transports",
+    "search": [],
+    "sub": [{
+        "name": "Tube/Bus",
+        "search": [ "TFL.GOV.UK", "TFL TRAVEL", "UBER" ]
+    }, {
+        "name": "Train",
+        "search": [ "TRAINLINE", "LNE RAILWAY", "GREATER ANGLIA", "VIRGINTRAINSEC", "RAILCARD" ]
+    }, {
+        "name": "Car hire",
+        "search": [
+            "D ROBERTSON & CO SER", "AVIS", "ICARHIREINSURANCE", "EUROPCAR", "HERTZ", "CARHIREEXCESS"
+        ]
+    }]
+}, {
+    "name": "Holiday",
+    "search": [
+        "EXPEDIA"
+    ],
+    "sub": [{
+        "name": "Transports",
+        "search": [ "HOSTEL", "RYANAIR", "EUROSTAR", "EASYJET", "BRITISH A", "AUTOST" ]
+    }, {
+        "name": "Accomodation",
+        "search": []
+    }, {
+        "name": "Food",
+        "search": [ "AEROPORTO MARCO ITALY", "VIP S\\.r\\.l\\.", "PIADACASSONI", "OASI DELLA" ]
+    }, {
+        "name": "Entertainment",
+        "search": []
+    }, {
+        "name": "Visa",
+        "search": []
+    }, {
+        "name": "Other",
+        "search": [ "LONELY PLANET" ]
+    }]
+}, {
+    "name": "Other",
+    "search": [
+        "KAVOR LIMITED"
+    ],
+    "sub": [{
+        "name": "Gift",
+        "search": []
+    }, {
+        "name": "House",
+        "search": []
+    }, {
+        "name": "Taxes",
+        "search": [ "INTEREST" ]
+    }, {
+        "name": "Investments",
+        "search": [ "FUNDINGCIRCLE", "HL.CO.UK" ]
+    }, {
+        "name": "Unkown",
+        "search": []
+    }, {
+        "name": "Other",
+        "search": []
+    }]
+}, {
+    "name": "Pub",
+    "search": [
+        "THE VICTORIA", "THE SHAKESPEARE", "THE CAT AND MUTTON", "SMITHFIELD PUBS", "OLD RED COW",
+        "BUTCHERS HOOK & CL", "BIERSCHENKE", "CROWN & ANCHOR", "KIPPS ALEHOUSE", "THE CITY PRIDE",
+        "THE ONSLOW ARMS", "LORD RAGLAN", "THE DRAFT HOUSE", "ASTRONOMER", "BREWDOG", "THE BLACK HORSE",
+        "SUTTON ARMS", "PHOENIX", "THE RISING SUN", "CB OPERATIONS NO 1", "WETHERSPOON", "YUMMY PUBS",
+        "WHITE HART", "WELLINGTON", "THE ANGEL INN", "DUKE OF SUSSEX", "THE UNICORNS HEAD", "WHITE BEAR",
+        "POMMELER'S REST", "THE EDGCUMBE ARMS", "MOON UNDER WATER", "INN ON THE GREEN", "THE ROYAL OAK",
+        "LORD TREDEGAR", "KINGS STORES", "FLASK \\(THE\\)", "THE BUCKS HEAD PUB", "TAVERN", "YE OLDE MITRE",
+        "CELTIC DRUID", "THE BLACK DOG"
+    ]
+}, {
+    "name": "Beer",
+    "search": [
+        "DOVE FREEHOUSE", "THE CRAFT", "EXMOUTH ARMS", "DOVETAIL", "THE-HOME-BREW", "HOMEBREWSHOPBE",
+        "MIKKELLER", "BEERGONZO", "BREWDOG", "DOMINION BREWE", "ABBOT HOME BREW", "EUSTON TAP",
+        "THE ITALIAN JOB", "Mother Kellys", "CAMBRIDGE BLUE", "KATZENJAMMERS", "BREW BY NUMBERS",
+        "MOOR BEER", "Anspach & Hobd", "DRAYMANS SON", "THE BOTTLE SHOP", "UNTAPPD", "THE KERNEL",
+        "STHOP", "MOSAIC", "PINT SHOP", "CAMBRIDGE BREW HOU", "WATERLOO TAP", "BELGO", "WARPIGS",
+        "THE RAKE", "THE DRAFT HOUSE", "HOWLING HOPS", "CRATE BAR LTD", "FOURPURE", "EEBRIA", "BALADIN",
+        "BREW HOUSE", "BAVARIAN BEERH", "THE ARBITRAGER", "HOP LOCKER", "CAMBRIDGE BLUE", "ANSPACHHOBD",
+        "TAP HOUSE", "LONDON BEER HOUSE", "POECHENELLE", "CRAFTBEERRISIN", "BIERE", "BROUWERIJ HET ANKER",
+        "MDH LAMBIC", "LA BECASSE"
+    ]
+}, {
+    "name": "Food",
+    "search": [
+        "BODEANS", "BYRON HAMBURGERS", "TAYYABS", "WOK TO WALK", "SPORTS BAR AND GRI", "PIXXA", "SUSHI",
+        "KEBAB", "JAPANESE CANTE", "HUNGERCURE FISH", "OK DINER", "INDIAN CITY", "BENITOS HAT",
+        "WAGAMAMA", "PIZZA UNION", "PRET A MANGER", "KFC", "ANTICA PZERIA", "SPIAGGIA 23", "MCDONALDS",
+        "GOURMET BURGER", "NANDO", "ANGOLO BLU", "TRATTORIA", "POLO BAR"
+    ]
+}, {
+    "name": "Grocery",
+    "search": [
+        "BEST FOOD CENTRE", "TESCO.STORE", "LONDON FOOD CENTRE", "\\bASDA\\b", "\\bBOOTS\\b", "SAINSBURY",
+        "CO-OP GROUP FOOD", "B F C RETAIL LIMIT", "M&S", "PLATTERS RESTAURAN", "J.K.L. FOOD CO",
+        "WAITROSE", "MS SIMPLY FOOD", "AGP CATERING", "IPERMERCATO LE BEF"
+    ]
+}, {
+    "name": "Lunch",
+    "search": [
+        "MOMOWICH", "ZEALAND COFFEE", "SUBWAY", "PONCHO", "PILPEL", "\\bLEON\\b", "\\bEAT\\b", "ABOKADO",
+        "WASABI", "MOMOCANTEEN", "ITSU", "BALANCE", "CRUST BROS", "TUCKA", "H MART", "CULTURE GRUB",
+        "LONDON DIGITAL", "GASTRONOME", "PENFOLD"
+    ]
+}, {
+    "name": "Bike",
+    "search": [
+        "PARADISE CYCLES", "ETA SERVICE", "HALFORDS", "DECATHLON"
+    ]
+}, {
+    "name": "Climbing",
+    "search": [
+        "CLIMBING", "MILE END CLIMBING", "ROCK ON MILE END", "LAKELAND CLIMB"
+    ]
+}, {
+    "name": "Night Out",
+    "search": [
+        "THE COURTYARD", "TROY BAR", "GORDONS WINE BAR", "LA HORA FEL", "VINERIA DEL POPOLO",
+        "BLACK ROCK"
+    ]
+}, {
+    "name": "Dressing",
+    "search": [
+        "HOLLISTER", "SORBINO"
+    ]
+}, {
+    "name": "Tech",
+    "search": [
+        "IPVANISH", "NAME-CHEAP"
+    ]
+}, {
+    "name": "Theater",
+    "search": [
+        "SCAFFOLD STATE", "DRAYTON ARMS"
+    ]
+}, {
+    "name": "Health",
+    "search": [
+        "LGL LTD CONTACT LE"
+    ]
+}, {
+    "name": "Phone",
+    "search": [
+        "GIFFGAFF", "THREE"
+    ]
+}, {
+    "name": "Coffee",
+    "search": [
+        "PACTCOFFEE"
+    ]
+}, {
+    "name": "Hiking",
+    "search": [
+        "COTSWOLD", "SEVENOAKS"
+    ]
+}, {
+    "name": "Entertainment",
+    "search": [
+        "\\bGLOBE\\b", "NIGHT OUT"
+    ]
+}, {
+    "name": "Dance",
+    "search": [
+        "FLORIPA"
+    ]
+}, {
+    "name": "Cash",
+    "search": [
+        "BANCA MALATESTIANA CC", "BOLOGNA CENTRALE SELF"
+    ]
+}, {
+    "name": "Health",
+    "search": [
+        "LGLCONTACT"
+    ]
+}, {
+    "name": "Rent",
+    "search": [
+        "E3 5QD - ROOM \\d"
+    ]
+}

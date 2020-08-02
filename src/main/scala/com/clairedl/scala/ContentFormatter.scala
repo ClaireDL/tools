@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 class ContentFormatter(table: List[Map[String, String]]) {
   // Get the width of each cell in a line
   protected def getCellWidth(line: Map[String, String]): Map[String, Int] = {
-      line.transform((key, value) => value.length().toInt)
+    line.transform((key, value) => value.length().toInt)
   }
 
   // Get the headers' width
@@ -40,15 +40,15 @@ class ContentFormatter(table: List[Map[String, String]]) {
   protected def addWhiteSpace(cell: Map[String, String], maxWidth: Map[String, Int]): Map[String, String] = {
     val columnWidth = getCellWidth(cell)
 
+    // Matches the columns for both tables and returns the absolute difference between the cells' width
     val whiteSpaces = columnWidth.flatMap {
-        // Matches the columns for both tables and returns the absolute difference between the cells' width
-        case (k, v) => maxWidth
-          .get(k)
-          .map{ w => Map((k, generateCharacter((v - w).abs, ' '))) }
-          .get
-      }
+      case (k, v) => maxWidth
+        .get(k)
+        .map{ w => Map((k, generateCharacter((v - w).abs, ' '))) }
+        .get
+    }
 
-    cell.flatMap{
+    cell.flatMap {
       case (k, v) => whiteSpaces
         .get(k)
         .map{ w => Map((k, v + w)) }
