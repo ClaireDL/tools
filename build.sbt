@@ -7,10 +7,10 @@ lazy val root = (project in file("."))
   .settings(
     name := "Tools",
     libraryDependencies ++= Seq(
-      "org.json4s" % "json4s-native_2.13" % "3.7.0-M2",
+      "org.json4s" %% "json4s-native" % "3.6.9",
+      "org.json4s" %% "json4s-jackson" % "3.6.9",
       "com.typesafe" % "config" % "1.4.0",
       "ch.qos.logback" % "logback-classic" % "1.2.3",
-      // "org.json4s" %% "json4s-jackson" % "3.6.9",
     ),
     exportJars := true
   )

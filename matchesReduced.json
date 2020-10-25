@@ -1,0 +1,15 @@
+{
+    "category": "Skydive",
+    "keyword": [
+        "PETERBOROUGH", "SKYDIVE", "RICHARD OWEN", "WINGGLIDER LIMITED"
+    ],
+    "subcategories": [{
+        "name": "Equipment",
+        "keyword": [
+            "THE JUMP SHOP", "DEKUNU", "CHUTINGSTAR", "AIR SUPPLY", "JEDI.*SUIT", "SUNSHINE FACTORY"
+        ]
+    }, {
+        "name": "Transports",
+        "key": [ "RICHARD OWEN\\s+(LIFT|UBER)\\s*$", "A2B EURO CARS" ]
+    }]
+}
