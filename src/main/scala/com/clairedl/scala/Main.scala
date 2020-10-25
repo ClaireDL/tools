@@ -3,7 +3,6 @@ package com.clairedl.scala
 import scala.io.Source
 import scala.util.Random._
 import scala.collection.mutable
-import scala.collection.mutable.ListBuffer
 import com.clairedl.scala.StringOperator._
 // import com.clairedl.scala.categoryFinder._
 
